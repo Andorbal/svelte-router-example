@@ -14,7 +14,7 @@ So I dug around and got a simple app building that used modules built by [rollup
 Just clone this repo, remove (or replace) git's origin remote, and build through npm.
 
 ```bash 
-$ git clone https://github.com/Andorbal/svelte-startup
+$ git clone https://github.com/Andorbal/svelte-startup.git
 $ cd svelte-startup
 $ git remote rm origin
 $ npm install

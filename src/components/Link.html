@@ -1,0 +1,22 @@
+<a href='#' on:click='navigate(event, to)'>{{text}}</a>
+
+<script>
+import history from '../services/history';
+
+export default {
+  data() {
+    return {
+      text: '',
+      to: '/',
+    };
+  },
+
+  methods: {
+    navigate(evt, path) {
+      if (evt && evt.preventDefault) evt.preventDefault();
+
+      if (path) history.push(path);
+    }
+  }
+}
+</script>

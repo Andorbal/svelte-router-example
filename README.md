@@ -1,36 +1,30 @@
-# svelte-startup
-Simple starter kit for a [Svelte](https://svelte.technology) app
+# svelte-router-example
+Simple [Svelte](https://svelte.technology) app that uses a router to select "pages."
 
 ## Purpose
 
-**TL;DR** This is a simple jumping-off point for Svelte apps.
+**TL;DR** Experimental app to test how a router could be implemented using Svelte.
 
-While going through the [getting started](https://svelte.technology/guide) guide for Svelte, I came across a line that said using modules is the recommended way to build a serious app, but that required more setup. OK, I thought... What setup? But the guide didnt go into it.
-
-So I dug around and got a simple app building that used modules built by [rollup](http://rollupjs.org). I tried to boil it down to the bare essentials and this is what I came up with.
+This is a very simple "app" that I'm going to use to test how I'd like a router implemented using Svelte. I'm currently leveraging as much existing code as I can, like [history](https://github.com/mjackson/history) and [route-parser](https://github.com/rcs/route-parser). This way I can focus on only the Svelte aspects.
 
 ## How to use
 
 Just clone this repo, remove (or replace) git's origin remote, and build through npm.
 
-```bash 
-$ git clone https://github.com/Andorbal/svelte-startup.git
-$ cd svelte-startup
+```bash
+$ git clone https://github.com/Andorbal/svelte-router-example.git
+$ cd svelte-router-example
 $ git remote rm origin
 $ npm install
-$ npm run build
+$ npm start
 ```
 
-You should be able to open ./dist/index.html directly in a browser, but you'll most likely want to serve that directory with something like python's SimpleHTTPServer. This is a pain point I want to address.
-
-If you use [yarn](https://yarnpkg.com), I have a lock file included so you can use that instead of npm.
+This will start a webserver on port 3000, and uses [livereload](https://github.com/napcs/node-livereload). So you can open your browser, point it at http://localhost:3000, and edit away!
 
 ## Next steps
 
-I'd like this eventually be similar to [create-react-app](https://github.com/facebookincubator/create-react-app), but that's the future. For now, I want to get a watch in place so that you don't need to run `npm run build` after each change. As I mentioned above, here is no dev server so you need to take care of that yourself. I want to fix that. I would also like to do minification, letting you differentiate between dev and release builds.
-
-My short term goals will be driven by the pain points as I explore this un-framework.
+I want to eventually extract the router code into an npm module so that other apps could make use of it. I'd also like to add more configuration options so that it's on par with what [react-router](https://github.com/ReactTraining/react-router) can do.
 
 ## License
 
-[MIT](https://raw.githubusercontent.com/Andorbal/svelte-startup/master/LICENSE)
+[MIT](https://raw.githubusercontent.com/Andorbal/svelte-router-example/master/LICENSE)

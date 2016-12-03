@@ -1,21 +1,38 @@
 {
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c && cp src/index.html dist/index.html"
+    "clean": "rimraf build",
+    "copy-index": "copyfiles -f src/index.html build",
+    "build": "npm run copy-index && rollup -c",
+    "watch": "npm run copy-index && rollup -c --watch",
+    "serve": "babel-node tools/devServer.js",
+    "start": "npm-run-all --parallel watch serve"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-preset-es2015-rollup": "^1.2.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "connect": "^3.5.0",
+    "copyfiles": "^1.0.0",
     "eslint": "^3.11.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.7.1",
+    "livereload": "^0.6.0",
+    "npm-run-all": "^3.1.2",
     "rollup": "^0.36.4",
     "rollup-plugin-babel": "^2.6.1",
     "rollup-plugin-commonjs": "^5.0.5",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-replace": "^1.1.1",
-    "rollup-plugin-svelte": "^1.0.0"
+    "rollup-plugin-svelte": "^1.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-watch": "^2.5.0",
+    "serve-static": "^1.11.1"
+  },
+  "dependencies": {
+    "history": "^4.4.1",
+    "route-parser": "^0.0.5"
   }
 }

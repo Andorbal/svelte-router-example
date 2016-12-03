@@ -1,3 +1,41 @@
-<div>
-  Start here
-</div>
+<header>
+  <h1>App test</h1>
+  <nav>
+    <ul>
+      <li><Link to='/home' text='Home' /></li>
+      <li><Link to='/about/bob' text='About Bob' /></li>
+      <li><Link to='/about/alice' text='About Alice' /></li>
+    </ul>
+  </nav>
+
+  <div id='content'></div>
+</header>
+
+<script>
+import createRouter from './services/createRouter';
+import Home from './components/Home.html';
+import About from './components/About.html';
+import Link from './components/Link.html';
+
+const router = createRouter({
+  '/': '/home',
+  '/home': Home,
+  '/about/:name': About,
+});
+
+export default {
+  onrender() {
+    router.start(window.location, window.document.querySelector('#content'));
+  },
+
+  onteardown() {
+    router.teardown();
+  },
+
+  components: {
+    Link,
+    Home,
+    About,
+  }
+}
+</script>

@@ -10,8 +10,9 @@ const server = connect();
 const basePath = path.resolve(__dirname, '..', 'build');
 const indexPath = path.resolve(basePath, 'index.html');
 const port = process.env.PORT || '3000';
+const staticRoot = process.env.APP_BASE_PATH || '/';
 
-server.use(serveStatic(basePath));
+server.use(staticRoot, serveStatic(basePath));
 server.use((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
   fs.createReadStream(indexPath).pipe(res);

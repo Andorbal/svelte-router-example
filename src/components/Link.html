@@ -1,4 +1,4 @@
-<a href='#' on:click='navigate(event, to)'>{{text}}</a>
+<a href='{{adjustedTo}}' on:click='navigate(event, to)'>{{text}}</a>
 
 <script>
 import history from '../services/history';
@@ -9,6 +9,10 @@ export default {
       text: '',
       to: '/',
     };
+  },
+
+  computed: {
+    adjustedTo: to => process.env.APP_BASE_PATH + to,
   },
 
   methods: {

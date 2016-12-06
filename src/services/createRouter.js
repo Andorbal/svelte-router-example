@@ -50,7 +50,7 @@ export default (routes) => {
     start: (location, targetElement) => {
       target = targetElement;
       unlisten = history.listen(handleRouteChange);
-      handleRouteChange(location);
+      handleRouteChange(history.location);
     },
     teardown: () => {
       if (unlisten) {

@@ -2,7 +2,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf build",
-    "copy-index": "ejs-cli src/index.html.ejs > build/index.html",
+    "copy-index": "mkdirp build && ejs-cli src/index.html.ejs > build/index.html",
     "build": "npm run copy-index && rollup -c",
     "watch": "npm run copy-index && rollup -c --watch",
     "serve": "babel-node tools/devServer.js",
@@ -24,6 +24,7 @@
     "eslint-plugin-react": "^6.7.1",
     "livereload": "^0.6.0",
     "npm-run-all": "^3.1.2",
+    "rimraf": "^2.5.4",
     "rollup": "^0.36.4",
     "rollup-plugin-babel": "^2.6.1",
     "rollup-plugin-commonjs": "^5.0.5",
@@ -36,6 +37,7 @@
   },
   "dependencies": {
     "history": "^4.4.1",
+    "mkdirp": "^0.5.1",
     "route-parser": "^0.0.5"
   }
 }

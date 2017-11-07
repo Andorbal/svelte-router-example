@@ -4,11 +4,14 @@ import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import replace from 'rollup-plugin-replace';
 import svelte from 'rollup-plugin-svelte';
-import uglify from 'rollup-plugin-uglify/dist/rollup-plugin-uglify';
+import uglify from 'rollup-plugin-uglify';
 
 export default {
-  entry: 'src/main.js',
-  format: 'iife',
+  input: 'src/main.js',
+  output: {
+    format: 'iife',
+    file: './build/bundle.js',
+  },
   plugins: [
     svelte({
       include: ['src/**/*.html'],
@@ -29,5 +32,4 @@ export default {
     }),
     (process.env.NODE_ENV === 'production' && uglify()),
   ],
-  dest: './build/bundle.js',
 };

@@ -9,20 +9,20 @@ export default (routes) => {
   const createRouteBehavior = (route) => {
     if (typeof route === 'function') {
       /* eslint-disable new-cap */
-      return input => (content = new route(input));
+      return (input) => {
+        content = new route(input);
+      };
     }
 
-    if (typeof route === 'object') {
-      if (route.redirect) {
-        return () => history.push(route.redirect);
-      }
+    if (typeof route === 'object' && route.redirect) {
+      return () => history.push(route.redirect);
     }
 
     if (typeof route === 'string') {
       return () => history.push(route);
     }
 
-    return () => { };
+    return () => {};
   };
 
   const routeData = Object.keys(routes)
@@ -47,12 +47,12 @@ export default (routes) => {
   };
 
   return {
-    start: (location, targetElement) => {
+    create: (location, targetElement) => {
       target = targetElement;
       unlisten = history.listen(handleRouteChange);
       handleRouteChange(history.location);
     },
-    teardown: () => {
+    destroy: () => {
       if (unlisten) {
         unlisten();
         unlisten = undefined;

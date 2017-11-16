@@ -25,17 +25,17 @@ const router = createRouter({
 
 export default {
   oncreate() {
-    router.start(window.location, window.document.querySelector('#content'));
+    router.create(window.location, window.document.querySelector('#content'));
   },
 
   ondestroy() {
-    router.teardown();
+    router.destroy();
   },
 
   components: {
     Link,
     Home,
     About,
-  }
-}
+  },
+};
 </script>
